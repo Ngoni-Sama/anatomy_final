@@ -4,54 +4,54 @@
 		<meta charset="utf-8">
         <title>Human Body Anatomy</title>
         <meta name="description" content="The Digital Human is a virtual 3D body that brings to life thousands of medically accurate anatomy objects and health conditions in an interactive Web-based platform" >
-        <meta name="keywords" content="Digital Human, Explore the Body in 3D, virtual 3D body, learning anatomy, anatomy education, anatomy textbooks, health visualization, 3D anatomy, interactive anatomy, online anatomy, anatomy apps" >   <link href="images/favicon.ico" type="image/x-icon" rel="shortcut icon">            
+        <meta name="keywords" content="Digital Human, Explore the Body in 3D, virtual 3D body, learning anatomy, anatomy education, anatomy textbooks, health visualization, 3D anatomy, interactive anatomy, online anatomy, anatomy apps" >   <link href="images/favicon.ico" type="image/x-icon" rel="shortcut icon">
         <meta content="text/html; charset=UTF-8" http-equiv="Content-type">
         <meta name="Publisher" content="Digital Human" >
-        <meta name="Copyright" content="2015" >
+        <meta name="Copyright" content="2020" >
         <meta name="Author"content="Digital Human" >
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link rel="stylesheet" media='screen and (min-width: 481px)' href="css/desktop.css"/>
-		<link rel="stylesheet" media='screen and (max-width: 480px)' href="css/mobile.css"/> 
+		<link rel="stylesheet" media='screen and (max-width: 480px)' href="css/mobile.css"/>
 		<style>
 			@media print {
 				header{display: none;}
 			}
-		</style>		
+		</style>
 	</head>
 
 	<body>
 		<header>
-            <h1>Human Body Anatomy</h1>
-            <img id="menu" src="images/menu.png" alt="menu" > 
-        </header> 
+            <h1>Human Body Anatomy by POCKETLABS</h1>
+            <img id="menu" src="images/menu.png" alt="menu" >
+        </header>
 		<div id="container"></div>
 		<div id="language">
 			<p>Change language</p>
 			<ul>
-				<li><a onclick="changelanguage('es')">Español</a></li>
-				<li><a onclick="changelanguage('zh')">中文</a></li>
-				<li><a onclick="changelanguage('en')">English</a></li>								
-			</ul>	
-		</div>	
+				<li><a onclick="changelanguage('es')">Ndebele</a></li>
+				<li><a onclick="changelanguage('zh')">shona</a></li>
+				<li><a onclick="changelanguage('en')">English</a></li>
+			</ul>
+		</div>
 		<div id="info">
-		
+
 		</div>
 		<div id="volumeimg"></div>
 		<script src="js/bodydata.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		<script src="build/three.min.js"></script>
-		
+
 		<script src="js/UCSCharacter.js"></script>
 
 		<script src="js/Detector.js"></script>
 
-		
+
 		<script src='js/libs/dat.gui.min.js'></script>
-				
+
 		<script src="js/controls/OrbitControls.js"></script>
-		
+
 		<script>
-			
+
 			var SCREEN_WIDTH = window.innerWidth;
 			var SCREEN_HEIGHT = window.innerHeight;
 
@@ -59,7 +59,7 @@
 
 			var camera, scene;
 			var renderer;
-			
+
 			var mesh;
 
 			var mouseX = 0, mouseY = 0;
@@ -68,9 +68,9 @@
 			var windowHalfY = window.innerHeight / 2;
 
 			var clock = new THREE.Clock();
-			
+
 			var gui, skinConfig, morphConfig;
-				
+
 			document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 
 			init();
@@ -119,7 +119,7 @@
 					gui.width = 300;
 					gui.open();
 				}
-				
+
 				var loader = new THREE.XHRLoader();
 				loader.load("models/skinned/UCS_config.json", function ( text ) {
 
@@ -130,22 +130,22 @@
 				} );
 
 				window.addEventListener( 'resize', onWindowResize, false );
-				
+
 				controls = new THREE.OrbitControls( camera, renderer.domElement );
 				controls.center.set( 0, 3000, 0);
 
 				controls.addEventListener( 'change', render );
 
 			}
-			
+
 			function setupSkinsGUI() {
-			
+
 				var skinGui = gui.addFolder( "Skins" );
-				
+
 				skinConfig = {
 					wireframe: false
 				};
-				
+
 				var skinCallback = function( index ) {
 					return function () {
 						character.setSkin( index );
@@ -156,39 +156,39 @@
 					var name = character.skins[ i ].name;
 					skinConfig[ name ] = skinCallback( i );
 				}
-				
+
 				for ( var i = 0; i < character.numSkins; i++ ) {
 					skinGui.add( skinConfig, character.skins[i].name );
 				}
-				
+
 				skinGui.open();
 
 			}
-			
+
 			function setupMorphsGUI() {
-				
+
 				var morphGui = gui.addFolder( "Morphs" );
-				
+
 				morphConfig = {
 				};
-				
+
 				var morphCallback = function( index ) {
 					return function () {
 						character.updateMorphs( morphConfig );
 					}
 				}
-				
+
 				for ( var i = 0; i < character.numMorphs; i ++ ) {
 					var morphName = character.morphs[ i ];
 					morphConfig[ morphName ] = 0;
 				}
-				
+
 				for ( var i = 0; i < character.numMorphs; i ++ ) {
 					morphGui.add( morphConfig, character.morphs[ i ] ).min( 0 ).max( 100 ).onChange( morphCallback( i ) );
 				}
-				
+
 				morphGui.open();
-			
+
 			}
 
 			function onWindowResize() {
@@ -298,21 +298,21 @@
 			    	$('#curlang').val(langug[lan]);
 
 			    }
-			  
-		</script>		
+
+		</script>
 		<script src="https://cdn.localizejs.com/localize.js"></script>
 		<script>!function(a){if(!a.Localize){a.Localize={};for(var e=["translate","untranslate","phrase","initialize","translatePage","setLanguage","getLanguage","detectLanguage","untranslatePage","bootstrap","prefetch","on","off"],t=0;t<e.length;t++)a.Localize[e[t]]=function(){}}}(window);</script>
 
 		<script>
 		  Localize.initialize({
-		    key: 'batzv0ZzWer4Z', 
+		    key: 'batzv0ZzWer4Z',
 		    rememberLanguage: true,
 		    saveNewPhrases: true,
 		    translateBody: true
 		  });
-		</script> 
+		</script>
         <script src="js/mespeak.js"></script>
-        <script src="js/script.js"></script>		
+        <script src="js/script.js"></script>
 		<input type="hidden" id="curlang" value="english" />
 		<script>
 		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -323,6 +323,6 @@
 		  ga('create', 'UA-62765714-1', 'auto');
 		  ga('send', 'pageview');
 
-		</script>		
+		</script>
 	</body>
 </html>
